@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Youtube } from "lucide-react"
+import { Mail, Phone, MapPin, Instagram, Facebook, Twitter, Youtube, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
@@ -28,10 +28,11 @@ export function Footer() {
   }
 
   const socials = [
-    { icon: Instagram, label: "Instagram" },
-    { icon: Facebook, label: "Facebook" },
-    { icon: Twitter, label: "Twitter" },
-    { icon: Youtube, label: "YouTube" }
+    { icon: Instagram, label: "Instagram", href: "#" },
+    { icon: Facebook, label: "Facebook", href: "#" },
+    { icon: Twitter, label: "Twitter", href: "#" },
+    { icon: Youtube, label: "YouTube", href: "#" },
+    { icon: Github, label: "GitHub", href: "https://github.com/raptile007/apex-moto-new" }
   ]
 
   return (
@@ -93,15 +94,18 @@ export function Footer() {
               </p>
               <div className="flex gap-4">
                 {socials.map((social) => (
-                  <motion.button
+                  <motion.a
                     key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2, color: "#ff4d00" }}
                     whileTap={{ scale: 0.9 }}
                     className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-white/10 transition-all border border-white/5"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
-                  </motion.button>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>

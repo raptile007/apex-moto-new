@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, ShoppingCart, Heart, Menu, X, MapPin, User, Radio } from "lucide-react"
+import { Search, ShoppingCart, Heart, Menu, X, MapPin, User, Radio, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -114,6 +114,19 @@ export function Header() {
                 >
                   <Radio className="w-5 h-5 transition-transform group-hover:scale-110" />
                   <span className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                </Button>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="relative text-white hover:bg-white/5 hover:text-apex-orange group"
+                  asChild
+                >
+                  <a href="https://github.com/raptile007/apex-moto-new" target="_blank" rel="noopener noreferrer">
+                    <Github className="w-5 h-5 transition-transform group-hover:scale-110" />
+                  </a>
                 </Button>
               </motion.div>
 

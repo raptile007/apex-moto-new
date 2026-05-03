@@ -47,7 +47,7 @@ The platform adheres to a strict design system:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/apexmoto.git
+   git clone https://github.com/raptile007/apex-moto-new.git
    ```
 
 2. **Install dependencies**:
@@ -65,7 +65,7 @@ The platform adheres to a strict design system:
    ```
 
 4. **Access the platform**:
-   Open [http://localhost:3010](http://localhost:3010) (or your configured port).
+   Open [http://localhost:3000](http://localhost:3000) (or your configured port).
 
 ---
 
