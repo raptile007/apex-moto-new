@@ -3,15 +3,18 @@
 import { motion } from "framer-motion"
 import { Button } from "./ui/button"
 import { ShoppingCart } from "lucide-react"
+import Image from "next/image"
 
 export function FeatureBanner() {
   return (
     <section className="relative h-[60vh] md:h-[70vh] flex items-center overflow-hidden bg-black">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img 
+        <Image 
           src="/feature-banner.jpg" 
           alt="Performance Air Filter" 
+          fill
+          priority
           className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-1000"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/60 to-transparent" />

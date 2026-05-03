@@ -5,6 +5,7 @@ import { X, Plus, Minus, ShoppingCart, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useStore } from "@/lib/store"
 import { toast } from "sonner"
+import Image from "next/image"
 
 export function CartDrawer() {
   const { 
@@ -104,7 +105,7 @@ export function CartDrawer() {
                     >
                       {/* Product Image */}
                       <div className="w-24 h-24 bg-neutral-900 rounded-2xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-white/10">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
+                        <Image src={item.image} alt={item.name} fill className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                       </div>
 
                       {/* Product Info */}

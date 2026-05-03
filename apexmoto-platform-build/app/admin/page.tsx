@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { 
   Package, 
   MapPin, 
@@ -226,7 +227,7 @@ function OverviewTab() {
                 <div key={product.id} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-colors">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center overflow-hidden">
-                      <img src={product.image} alt="" className="w-full h-full object-cover opacity-50" />
+                      <Image src={product.image} alt="" fill className="w-full h-full object-cover opacity-50" />
                     </div>
                     <div>
                       <p className="font-display font-black text-xs italic uppercase tracking-tight">{product.name}</p>
@@ -244,9 +245,9 @@ function OverviewTab() {
       )}
 
       {/* Recent Activity */}
-      <Card className="border-neutral-200">
+      <Card className="bg-white/5 border-white/10 overflow-hidden rounded-3xl">
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
+          <CardTitle className="font-display font-black italic uppercase tracking-tighter">Recent Activity</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -261,13 +262,13 @@ function OverviewTab() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center justify-between py-3 border-b border-neutral-100 last:border-0"
+                className="flex items-center justify-between py-3 border-b border-white/5 last:border-0"
               >
                 <div>
-                  <p className="font-medium text-sm">{activity.action}</p>
-                  <p className="text-xs text-neutral-500">{activity.detail}</p>
+                  <p className="font-bold text-sm text-white">{activity.action}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-neutral-500">{activity.detail}</p>
                 </div>
-                <span className="text-xs text-neutral-400">{activity.time}</span>
+                <span className="text-[10px] font-black tracking-widest text-neutral-600 uppercase">{activity.time}</span>
               </motion.div>
             ))}
           </div>
@@ -349,7 +350,7 @@ function ProductsTab({ searchQuery }: { searchQuery: string }) {
                     <td className="p-6">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center overflow-hidden border border-white/10">
-                          <img src={product.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                          <Image src={product.image} alt="" fill className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         </div>
                         <div>
                           <p className="font-display font-black text-xs italic uppercase tracking-tight">{product.name}</p>
@@ -450,19 +451,19 @@ function ProductsTab({ searchQuery }: { searchQuery: string }) {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={!!deleteConfirm} onOpenChange={() => setDeleteConfirm(null)}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm bg-[#0a0a0a] border-white/10 text-white rounded-3xl">
           <DialogHeader>
-            <DialogTitle>Delete Product?</DialogTitle>
+            <DialogTitle className="font-display font-black italic uppercase tracking-tighter">Delete Product?</DialogTitle>
           </DialogHeader>
-          <p className="text-sm text-neutral-600">
-            This action cannot be undone. Are you sure you want to delete this product?
+          <p className="text-sm text-neutral-400 font-medium">
+            This action cannot be undone. Are you sure you want to delete this unit from the tactical database?
           </p>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteConfirm(null)}>
-              Cancel
+          <DialogFooter className="gap-2 pt-4">
+            <Button variant="ghost" onClick={() => setDeleteConfirm(null)} className="text-neutral-400 hover:text-white">
+              ABORT
             </Button>
-            <Button variant="destructive" onClick={() => handleDeleteProduct(deleteConfirm!)}>
-              Delete
+            <Button variant="destructive" onClick={() => handleDeleteProduct(deleteConfirm!)} className="bg-red-500 hover:bg-red-600 text-white font-black italic uppercase tracking-tighter rounded-xl">
+              CONFIRM_DELETE
             </Button>
           </DialogFooter>
         </DialogContent>

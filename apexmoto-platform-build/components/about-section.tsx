@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Badge } from "./ui/badge"
+import Image from "next/image"
 
 export function AboutSection() {
   return (
@@ -27,7 +28,7 @@ export function AboutSection() {
                 From India towards the Globe, we are available 24/7 to support our customers and guide them in a proper way to select the product range from individuals to large wholesalers.
               </p>
               <p>
-                Our range of products include the very best brands in the Global market. Our stocks consist of inventory of parts covering the full range for all Royal Enfield Models like Cast Iron STD 350 and 500 CC's as well as the new UCE, EFI, TWINS Models & J Platform etc.
+                Our range of products include the very best brands in the Global market. Our stocks consist of inventory of parts covering the full range for all Royal Enfield Models like Cast Iron STD 350 and 500 CC&apos;s as well as the new UCE, EFI, TWINS Models & J Platform etc.
               </p>
             </div>
             
@@ -53,9 +54,10 @@ export function AboutSection() {
             className="relative"
           >
             <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/5">
-               <img 
+               <Image 
                   src="/about-us.jpg" 
                   alt="About ApexMoto" 
+                  fill
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                />
                <div className="absolute inset-0 bg-apex-orange/20 mix-blend-overlay" />

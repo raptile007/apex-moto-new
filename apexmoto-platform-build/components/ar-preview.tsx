@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { Scan, Box, X, Target } from "lucide-react"
 import { useSound } from "@/hooks/use-sound"
+import { Button } from "./ui/button"
 
 type ARPreviewProps = {
   isOpen: boolean

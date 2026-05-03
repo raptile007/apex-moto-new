@@ -8,6 +8,7 @@ import { useStore } from "@/lib/store"
 import { type Product } from "@/lib/data"
 import { toast } from "sonner"
 import { useSound } from "@/hooks/use-sound"
+import Image from "next/image"
 
 type ProductCardProps = {
   product: Product
@@ -115,9 +116,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
             whileHover={{ scale: 1.1, rotate: -2 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <img 
+            <Image 
               src={product.image} 
               alt={product.name}
+              fill
               className="w-full h-full object-cover group-hover:opacity-60 transition-opacity duration-500"
             />
           </motion.div>

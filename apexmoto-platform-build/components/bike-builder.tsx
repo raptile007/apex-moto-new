@@ -12,6 +12,8 @@ import { useSound } from "@/hooks/use-sound"
 
 export function BikeBuilder() {
   const { addToCart, setIsCartOpen, selectedParts, setSelectedParts } = useStore()
+  const { play } = useSound()
+  const [selectedBike, setSelectedBike] = useState<Bike>(bikes[0])
   const [activeCategory, setActiveCategory] = useState<string>("Brakes")
   const [isMounted, setIsMounted] = useState(false)
 
@@ -60,7 +62,32 @@ export function BikeBuilder() {
   }
 
   const handleAddToCart = () => {
-    Object.values(selectedParts).forEach(part => addToCart(part))
+    // Add the base bike as a product
+    const bikeProduct: Product = {
+      id: selectedBike.id,
+      name: `${selectedBike.name} (BASE_CHASSIS)`,
+      brand: selectedBike.brand,
+      category: "Engine",
+      price: selectedBike.basePrice,
+      description: `Base performance configuration for ${selectedBike.name}`,
+      image: selectedBike.image,
+      stock: 1,
+      stockStatus: "In Stock",
+      specs: { Model: selectedBike.model, Year: selectedBike.year }
+    }
+    
+    addToCart(bikeProduct)
+    
+    // Add all selected upgrades
+    Object.values(selectedParts).forEach(part => {
+      addToCart(part)
+    })
+
+    play('success')
+    toast.success("FULL_LOADOUT DEPLOYED", {
+      description: `${selectedBike.name} with ${Object.keys(selectedParts).length} tactical upgrades added to cart.`
+    })
+    setIsCartOpen(true)
   }
 
   return (

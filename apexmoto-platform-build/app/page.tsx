@@ -5,11 +5,16 @@ import { Hero } from "@/components/hero"
 import { BikeBuilder } from "@/components/bike-builder"
 import { ProductGrid } from "@/components/product-grid"
 import { ProductModal } from "@/components/product-modal"
-import { ShopMap } from "@/components/shop-map"
 import { Footer } from "@/components/footer"
 import { AboutSection } from "@/components/about-section"
 import { FeatureBanner } from "@/components/feature-banner"
 import { motion, useScroll, useSpring } from "framer-motion"
+import dynamic from "next/dynamic"
+
+const ShopMap = dynamic(() => import("@/components/shop-map").then(mod => mod.ShopMap), { 
+  ssr: false,
+  loading: () => <div className="h-[700px] bg-white/5 animate-pulse rounded-[3rem]" />
+})
 
 export default function Home() {
   const { scrollYProgress } = useScroll()

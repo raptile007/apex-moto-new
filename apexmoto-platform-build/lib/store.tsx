@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
 import { products as initialProducts, shops as initialShops, type Product, type Shop, type CartItem } from "./data"
 
 type StoreContextType = {
@@ -75,6 +75,48 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [selectedParts, setSelectedParts] = useState<Record<string, Product>>({})
+  
+  // Hydration from localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem("apexmoto_cart")
+    const savedWishlist = localStorage.getItem("apexmoto_wishlist")
+    const savedParts = localStorage.getItem("apexmoto_selected_parts")
+
+    if (savedCart) {
+      try {
+        setCart(JSON.parse(savedCart))
+      } catch (e) {
+        console.error("Failed to parse cart", e)
+      }
+    }
+    if (savedWishlist) {
+      try {
+        setWishlist(JSON.parse(savedWishlist))
+      } catch (e) {
+        console.error("Failed to parse wishlist", e)
+      }
+    }
+    if (savedParts) {
+      try {
+        setSelectedParts(JSON.parse(savedParts))
+      } catch (e) {
+        console.error("Failed to parse selected parts", e)
+      }
+    }
+  }, [])
+
+  // Persistence to localStorage
+  useEffect(() => {
+    localStorage.setItem("apexmoto_cart", JSON.stringify(cart))
+  }, [cart])
+
+  useEffect(() => {
+    localStorage.setItem("apexmoto_wishlist", JSON.stringify(wishlist))
+  }, [wishlist])
+
+  useEffect(() => {
+    localStorage.setItem("apexmoto_selected_parts", JSON.stringify(selectedParts))
+  }, [selectedParts])
   
   // Product handlers
   const updateProduct = useCallback((id: string, updates: Partial<Product>) => {

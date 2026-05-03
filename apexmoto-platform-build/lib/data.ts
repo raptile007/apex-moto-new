@@ -1,7 +1,7 @@
 export type Product = {
   id: string
   name: string
-  brand: "KTM" | "Honda" | "Yamaha" | "Bajaj"
+  brand: "KTM" | "Honda" | "Yamaha" | "Bajaj" | "Royal Enfield" | string
   category: "Brakes" | "Engine" | "Drive" | "Tyres"
   price: number
   originalPrice?: number
