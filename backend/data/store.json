@@ -1,0 +1,41 @@
+{
+  "products": [
+    {
+      "id": "brake-001",
+      "name": "Sintered Brake Pads Pro",
+      "brand": "KTM",
+      "category": "Brakes",
+      "price": 89.99,
+      "description": "High-performance sintered brake pads.",
+      "image": "/parts/brake-pads.png",
+      "stock": 24,
+      "stockStatus": "In Stock",
+      "specs": { "Material": "Sintered Metal" }
+    }
+  ],
+  "shops": [
+    {
+      "id": "shop-001",
+      "name": "Apex Service Hub",
+      "address": "12 Racing Ave",
+      "city": "Austin",
+      "lat": 30.2672,
+      "lng": -97.7431,
+      "phone": "+1 555-0101",
+      "hours": "9 AM - 8 PM",
+      "services": ["Engine Tuning", "Brake Service"]
+    }
+  ],
+  "bikes": [
+    {
+      "id": "bike-001",
+      "name": "KTM Duke 390",
+      "brand": "KTM",
+      "model": "Duke 390",
+      "year": "2024",
+      "image": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800",
+      "basePrice": 350000,
+      "compatibleCategories": ["Brakes", "Engine", "Drive", "Tyres"]
+    }
+  ]
+}
