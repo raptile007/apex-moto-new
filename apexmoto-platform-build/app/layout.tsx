@@ -66,6 +66,7 @@ export const viewport: Viewport = {
 }
 
 import { StoreProvider } from '@/lib/store'
+import { AuthProvider } from '@/lib/auth-context'
 import { Toaster } from 'sonner'
 
 export default function RootLayout({
@@ -84,23 +85,25 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased bg-background text-foreground custom-scrollbar overflow-x-hidden">
-        <StoreProvider>
-          <CustomCursor />
-          <ApexAI />
-          {children}
-          {process.env.NODE_ENV === 'production' && <Analytics />}
-          <Toaster 
-            position="bottom-right" 
-            toastOptions={{
-              style: {
-                background: "#1a1a1a",
-                color: "#fff",
-                border: "1px solid rgba(255, 77, 0, 0.2)",
-                borderRadius: "16px",
-              }
-            }}
-          />
-        </StoreProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <CustomCursor />
+            <ApexAI />
+            {children}
+            {process.env.NODE_ENV === 'production' && <Analytics />}
+            <Toaster 
+              position="bottom-right" 
+              toastOptions={{
+                style: {
+                  background: "#1a1a1a",
+                  color: "#fff",
+                  border: "1px solid rgba(255, 77, 0, 0.2)",
+                  borderRadius: "16px",
+                }
+              }}
+            />
+          </StoreProvider>
+        </AuthProvider>
       </body>
     </html>
   )
