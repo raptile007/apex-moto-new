@@ -3,7 +3,8 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, ShoppingCart, Heart, Menu, X, MapPin, User, Radio, Github } from "lucide-react"
+import { Search, ShoppingCart, Heart, Menu, X, MapPin, Radio, Github } from "lucide-react"
+import { UserMenu } from "./user-menu"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -130,19 +131,7 @@ export function Header() {
                 </Button>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="relative text-white hover:bg-white/5 hover:text-apex-orange group"
-                  asChild
-                >
-                  <Link href="/admin">
-                    <User className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-apex-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_10px_#ff4d00]" />
-                  </Link>
-                </Button>
-              </motion.div>
+              <UserMenu />
 
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
